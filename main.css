@@ -151,3 +151,7 @@ h3,h4{
 .row {
   margin-bottom: 5px;
 }
+
+.hidden {
+  display: none;
+}

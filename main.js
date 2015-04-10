@@ -1,19 +1,21 @@
+Element.prototype.prependChild = function(child) { this.insertBefore(child, this.firstChild); };
+
 var evtSource = new EventSource('http://firehose.libraries.io/events');
 var eventList = document.getElementById('events');
 
 evtSource.addEventListener('pkg', function(evt) {
   var pkg = JSON.parse(evt.data);
   console.debug('pkg:', pkg);
-  addToList(pkg)
+  addToList(pkg);
 }, false);
 
-function addToList (pkg) {
-  eventList.appendChild(createMediaItem(pkg));
+function addToList(pkg) {
+  eventList.prependChild(createMediaItem(pkg));
 }
 
 function createMediaItem (pkg) {
   var item = document.createElement('li');
-  item.className = 'media'
+  item.className = 'media';
 
   var left = document.createElement('div');
   left.className = 'media-left';
@@ -51,5 +53,11 @@ function createPictogram (platform) {
 }
 
 function toLibrariesUrl(pkg) {
-  return 'http://libraries.io/' + [pkg.platform, pkg.name].join('/')
+  return 'http://libraries.io/' + [pkg.platform, pkg.name].join('/');
 }
+
+function hideMsg() {
+  var el = document.getElementById('msg');
+  el.className = el.className + ' hidden';
+}
+setTimeout(hideMsg, 5000);
