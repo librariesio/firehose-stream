@@ -45,7 +45,7 @@ function createMediaItem (pkg) {
 
 function createPictogram (platform) {
   var pictogram = document.createElement('div');
-  pictogram.className = 'pictogram pictogram-lg pictogram-' + platform;
+  pictogram.className = 'pictogram pictogram-lg pictogram-' + platform.toLowerCase();
   pictogram.setAttribute('title', platform);
   return pictogram;
 }
