@@ -60,4 +60,4 @@ function hideMsg() {
   var el = document.getElementById('msg');
   el.className = el.className + ' hidden';
 }
-setTimeout(hideMsg, 30000);
+setTimeout(hideMsg, 60000);
