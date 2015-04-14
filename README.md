@@ -12,7 +12,7 @@ Sample clients in the `examples` folder.
 
 `http://firehose.libraries.io/events`
 
-CORS is supported.
+Only the `http` is supported at the moment so if you connect from a secure page make sure to allow mixed content. CORS is supported.
 
 ## Event stream format
 
