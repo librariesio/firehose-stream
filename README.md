@@ -17,7 +17,6 @@ Only the `http` is supported at the moment so if you connect from a secure page 
 ## Event stream format
 
 ```
-retry: 500
 event: pkg
 data: {"platform":"Packagist","name":"miniframe/miniframe","version":"1.0.x-dev"}
 ```
