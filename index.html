@@ -6,31 +6,117 @@
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="yes" name="apple-mobile-web-app-capable">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://librariesio.github.io/pictogram/pictogram.css" rel="stylesheet"/>
     <link href="./main.css" rel="stylesheet">
 </head>
 
 <body>
+  <script id="entry-template" type="text/x-handlebars-template">
+    <li class="media project" style='display:none;'>
+      <div class="media-left"><div class="media-object"><div class="pictogram pictogram-sm pictogram-{{toLowerCase platform}}" title="npm"></div></div></div>
+      <div class="media-body">
+        <h5>
+          <a href="https://libraries.io/{{platform}}/{{name}}">{{name}}</a>
+          <small>{{version}}</small>
+        </h5>
+
+        <div class="">
+          {{truncate project.description 100}}
+        </div>
+
+        <small>
+          <a href="https://libraries.io/{{platform}}">{{platform}}</a> -
+
+          {{#if project.language}}
+            <a href="https://libraries.io/languages/{{project.language}}">{{project.language}}</a> -
+          {{/if}}
+
+
+
+            {{#each project.normalized_licenses}}
+            <a href="https://libraries.io/licenses/{{this}}">{{this}}</a> -
+            {{/each}}
+          Published seconds ago
+        </small>
+
+      </div>
+    </li>
+
+  </script>
     <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="/">Libraries Firehose</a>
+              <a class="navbar-brand" href="https://libraries.io"><img src="https://libraries.io/assets/logo-a18f473884064c32c133cd280103fab7.svg" alt="Logo" /></a>
             </div>
         </div>
     </div>
 
     <div class="container">
-      <p id="msg"><small>
-        Depending on the time of the day you might need to wait a few seconds or a few minutes;<br>
-        packages will start showing up as they are being published on their respective platforms...
-      </small></p>
-      <ul id='events' class="media-list"></ul>
+      <div class="row">
+        <div id="overview" class="col-md-6">
+          <h1>Libraries.io
+            <small>https://libraries.io</small>
+          </h1>
+          <p>
+            Libraries.io monitors <strong>815,876</strong> open source libraries across <strong>29</strong> different package managers written in over <strong>160</strong> different languges.
+          </p>
+          <p>
+            You can discover new libraries to use in your software projects as well as be notified of new releases to keep your applications secure and up to date.
+          </p>
+
+          <p>
+            Libraries.io aims to help both maintainers and users of open source software with a range of tools to improve visibility across changes in the ecosystem.
+          </p>
+
+          <a href="https://twitter.com/librariesio" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @librariesio</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+          <h2>Features</h2>
+          <br>
+          <ul>
+            <li>Powerful search using a PageRank style algorithm to suggest the most dependable software, filterable by language, platform, license and keyword.</li>
+            <li>Close to realtime updates of new libraries and new versions of existing libraries, usually in sync within 10 minutes of new releases.</li>
+            <li>Subscribe to email notifications of new versions of libraries that you depend upon.</li>
+            <li>Open source license normalization with all valid SPDX licenses to help maintain compliance.</li>
+            <li>Standardized RSS feeds and JSON APIs across all platforms to work with the open web including a realtime Firehose API.</li>
+            <li>GitHub repository dependency parsing technology, indexing the dependency graph of the whole open source ecosystem.</li>
+          </ul>
+          <h2>Coming soon</h2>
+          <br>
+          <ul>
+            <li>Automatic dependency notifications for repositories, keeping track of dependencies you use and notifying you of updates automatically as you build your app.</li>
+            <li>Dependency based Library recommendation engine, suggesting open source projects based on the libraries you actually use in your code.</li>
+            <li>Web hooks and integrations with many popular services including Slack, Hipchat, Issue trackers and more.</li>
+            <li>Security advisory notifications - Get notified of security releases and affected dependent projects the instant they are announced.</li>
+            <li>Curated collections of libraries - User generated groups of libraries, hand picked to solve particular problems.</li>
+            <li>Automatic changelog generation - see all relevant changes to a library when new versions are released, even if the author doesn't maintain a changelog.</li>
+          </ul>
+          <br>
+          <h2>Supported Platforms</h2>
+          <br>
+          <div class='pictogram pictogram-sm pictogram-go'></div><div class='pictogram pictogram-sm pictogram-npm'></div><div class='pictogram pictogram-sm pictogram-maven'></div><div class='pictogram pictogram-sm pictogram-rubygems'></div><div class='pictogram pictogram-sm pictogram-packagist'></div><div class='pictogram pictogram-sm pictogram-pypi'></div><div class='pictogram pictogram-sm pictogram-wordpress'></div><div class='pictogram pictogram-sm pictogram-bower'></div><div class='pictogram pictogram-sm pictogram-cpan'></div><div class='pictogram pictogram-sm pictogram-nuget'></div><div class='pictogram pictogram-sm pictogram-cocoapods'></div><div class='pictogram pictogram-sm pictogram-hackage'></div><div class='pictogram pictogram-sm pictogram-clojars'></div><div class='pictogram pictogram-sm pictogram-cran'></div><div class='pictogram pictogram-sm pictogram-meteor'></div><div class='pictogram pictogram-sm pictogram-atom'></div><div class='pictogram pictogram-sm pictogram-emacs'></div><div class='pictogram pictogram-sm pictogram-cargo'></div><div class='pictogram pictogram-sm pictogram-pub'></div><div class='pictogram pictogram-sm pictogram-biicode'></div><div class='pictogram pictogram-sm pictogram-sublime'></div><div class='pictogram pictogram-sm pictogram-jam'></div><div class='pictogram pictogram-sm pictogram-hex'></div><div class='pictogram pictogram-sm pictogram-julia'></div><div class='pictogram pictogram-sm pictogram-dub'></div><div class='pictogram pictogram-sm pictogram-alcatraz'></div><div class='pictogram pictogram-sm pictogram-platformio'></div><div class='pictogram pictogram-sm pictogram-nimble'></div><div class='pictogram pictogram-sm pictogram-elm'></div>
+          <br>
+          <br>
+          <h2>Supported Languages</h2>
+          <br>
+          <div class='pictogram pictogram-sm pictogram-go'></div><div class='pictogram pictogram-sm pictogram-javascript'></div><div class='pictogram pictogram-sm pictogram-ruby'></div><div class='pictogram pictogram-sm pictogram-php'></div><div class='pictogram pictogram-sm pictogram-java'></div><div class='pictogram pictogram-sm pictogram-python'></div><div class='pictogram pictogram-sm pictogram-coffeescript'></div><div class='pictogram pictogram-sm pictogram-css'></div><div class='pictogram pictogram-sm pictogram-scala'></div><div class='pictogram pictogram-sm pictogram-c#'></div><div class='pictogram pictogram-sm pictogram-clojure'></div><div class='pictogram pictogram-sm pictogram-perl'></div><div class='pictogram pictogram-sm pictogram-haskell'></div><div class='pictogram pictogram-sm pictogram-html'></div><div class='pictogram pictogram-sm pictogram-c'></div><div class='pictogram pictogram-sm pictogram-c++'></div><div class='pictogram pictogram-sm pictogram-rust'></div><div class='pictogram pictogram-sm pictogram-emacs lisp'></div><div class='pictogram pictogram-sm pictogram-dart'></div><div class='pictogram pictogram-sm pictogram-swift'></div><div class='pictogram pictogram-sm pictogram-julia'></div><div class='pictogram pictogram-sm pictogram-elixir'></div><div class='pictogram pictogram-sm pictogram-d'></div><div class='pictogram pictogram-sm pictogram-r'></div><div class='pictogram pictogram-sm pictogram-typescript'></div><div class='pictogram pictogram-sm pictogram-groovy'></div><div class='pictogram pictogram-sm pictogram-livescript'></div><div class='pictogram pictogram-sm pictogram-purescript'></div><div class='pictogram pictogram-sm pictogram-f#'></div><div class='pictogram pictogram-sm pictogram-makefile'></div><div class='pictogram pictogram-sm pictogram-nimrod'></div><div class='pictogram pictogram-sm pictogram-erlang'></div><div class='pictogram pictogram-sm pictogram-powershell'></div><div class='pictogram pictogram-sm pictogram-actionscript'></div><div class='pictogram pictogram-sm pictogram-tex'></div><div class='pictogram pictogram-sm pictogram-elm'></div><div class='pictogram pictogram-sm pictogram-lua'></div><div class='pictogram pictogram-sm pictogram-assembly'></div><div class='pictogram pictogram-sm pictogram-apacheconf'></div><div class='pictogram pictogram-sm pictogram-handlebars'></div><div class='pictogram pictogram-sm pictogram-hack'></div><div class='pictogram pictogram-sm pictogram-fortran'></div><div class='pictogram pictogram-sm pictogram-scheme'></div><div class='pictogram pictogram-sm pictogram-xml'></div><div class='pictogram pictogram-sm pictogram-puppet'></div><div class='pictogram pictogram-sm pictogram-perl6'></div><div class='pictogram pictogram-sm pictogram-haxe'></div>
+
+        </div>
+        <div class="col-md-6">
+          <h3>Open Source Event Firehose:</h3>
+          <ul id='events' class="media-list">
+
+          </ul>
+        </div>
+      </div>
+
     </div>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
     <script src="./main.js"></script>
 </body>
 </html>

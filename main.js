@@ -1,7 +1,25 @@
 Element.prototype.prependChild = function(child) { this.insertBefore(child, this.firstChild); };
 
 var evtSource = new EventSource('http://firehose.libraries.io/events');
-var eventList = document.getElementById('events');
+
+Handlebars.registerHelper('toLowerCase', function(str) {
+  return str.toLowerCase();
+});
+
+Handlebars.registerHelper ('truncate', function (str, len) {
+    if (str.length > len && str.length > 0) {
+        var new_str = str + " ";
+        new_str = str.substr (0, len);
+        new_str = str.substr (0, new_str.lastIndexOf(" "));
+        new_str = (new_str.length > 0) ? new_str : str.substr (0, len);
+
+        return new Handlebars.SafeString ( new_str +'...' );
+    }
+    return str;
+});
+
+var source   = $("#entry-template").html();
+var template = Handlebars.compile(source);
 
 evtSource.addEventListener('pkg', function(evt) {
   var pkg = JSON.parse(evt.data);
@@ -10,54 +28,9 @@ evtSource.addEventListener('pkg', function(evt) {
 }, false);
 
 function addToList(pkg) {
-  eventList.prependChild(createMediaItem(pkg));
+  var html    = template(pkg);
+  $('#events').prepend(html)
+  $('#events .project').slideDown(500)
 }
 
-function createMediaItem (pkg) {
-  var item = document.createElement('li');
-  item.className = 'media';
-
-  var left = document.createElement('div');
-  left.className = 'media-left';
-
-  var obj = document.createElement('div');
-  obj.className = 'media-object';
-  obj.appendChild(createPictogram(pkg.platform));
-
-  left.appendChild(obj);
-
-  var body = document.createElement('a');
-  body.className = 'media-body';
-  body.setAttribute('href', toLibrariesUrl(pkg));
-
-  var heading = document.createElement('h4');
-  heading.className = 'media-heading';
-  heading.innerHTML = pkg.name;
-
-  var text = document.createElement('p');
-  text.innerHTML = pkg.platform + ' - ' + pkg.name + ' - v' + pkg.version;
-
-  body.appendChild(heading);
-  body.appendChild(text);
-
-  item.appendChild(left);
-  item.appendChild(body);
-  return item;
-}
-
-function createPictogram (platform) {
-  var pictogram = document.createElement('div');
-  pictogram.className = 'pictogram pictogram-lg pictogram-' + platform.toLowerCase();
-  pictogram.setAttribute('title', platform);
-  return pictogram;
-}
-
-function toLibrariesUrl(pkg) {
-  return 'http://libraries.io/' + [pkg.platform, pkg.name].join('/');
-}
-
-function hideMsg() {
-  var el = document.getElementById('msg');
-  el.className = el.className + ' hidden';
-}
-setTimeout(hideMsg, 60000);
+// addToList({platform: 'NPM', name: 'node-sass', version: '1.0.0', platform: {description: 'foo', normalized_licenses: ['MIT']}})
