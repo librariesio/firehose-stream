@@ -6,7 +6,7 @@ Each event constitues the release of a package in one of the supported platforms
 
 It implements the [HTML5 Server-Sent Events / EventSource API](https://developer.mozilla.org/en-US/docs/Web/API/EventSource).
 
-Sample clients in the `examples` folder.
+Sample clients in the `examples` folder. And a running example [here](http://librariesio.github.io/firehose-stream/).
 
 ## Endpoint
 
