@@ -23,7 +23,7 @@ data: {"platform":"String","name":"String","version":"x.x.x","package_manager_ur
 
 ###### Example Data:
 
-```
+```json
 {
   "platform":"Rubygems",
   "name":"bastion",
