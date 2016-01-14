@@ -18,7 +18,31 @@ Only the `http` is supported at the moment so if you connect from a secure page 
 
 ```
 event: pkg
-data: {"platform":"Packagist","name":"miniframe/miniframe","version":"1.0.x-dev"}
+data: {"platform":"String","name":"String","version":"x.x.x","package_manager_url":"URLString","published_at":"ISString","project":{"name":"String","platform":"String","description":"String","homepage":"URLString","repository_url":"URLString","normalized_licenses":["String"],"latest_release_published_at":"ISOString","language":"String"}}
+```
+
+###### Example Data:
+
+```
+{
+  "platform":"Rubygems",
+  "name":"bastion",
+  "version":"3.0.1",
+  "package_manager_url":"https://rubygems.org/gems/bastion/versions/3.0.1",
+  "published_at":"2016-01-14T14:18:51.596Z",
+  "project":{
+    "name":"bastion",
+    "platform":"Rubygems",
+    "description":"Bastion provides a UI library of AngularJS based components designed to integrate and work with Foreman.",
+    "homepage":"http://www.github.com/Katello/bastion",
+    "repository_url":"https://github.com/Katello/bastion",
+    "normalized_licenses":[
+      "GPL-2.0"
+    ],
+    "latest_release_published_at":"2016-01-11T20:29:57.186Z",
+    "language":"JavaScript"
+  }
+}
 ```
 
 From the standard:
