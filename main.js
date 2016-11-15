@@ -35,7 +35,7 @@ function createMediaItem (pkg) {
   heading.innerHTML = pkg.name;
 
   var text = document.createElement('p');
-  text.innerHTML = pkg.platform + ' - ' + pkg.name + ' - v' + pkg.version;
+  text.innerHTML = pkg.platform + ' - ' + pkg.name + ' - ' + pkg.version;
 
   body.appendChild(heading);
   body.appendChild(text);
