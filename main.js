@@ -3,7 +3,7 @@ Element.prototype.prependChild = function(child) { this.insertBefore(child, this
 var evtSource = new EventSource('http://firehose.libraries.io/events');
 var eventList = document.getElementById('events');
 
-evtSource.addEventListener('pkg', function(evt) {
+evtSource.addEventListener('event', function(evt) {
   var pkg = JSON.parse(evt.data);
   console.debug('pkg:', pkg);
   addToList(pkg);
