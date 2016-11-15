@@ -53,7 +53,7 @@ function createPictogram (platform) {
 }
 
 function toLibrariesUrl(pkg) {
-  return 'http://libraries.io/' + [pkg.platform, escape(pkg.name)].join('/');
+  return 'http://libraries.io/' + [pkg.platform, encodeURIComponent(pkg.name)].join('/');
 }
 
 function hideMsg() {
