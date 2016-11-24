@@ -29,6 +29,7 @@ function createMediaItem (pkg) {
   var body = document.createElement('a');
   body.className = 'media-body';
   body.setAttribute('href', toLibrariesUrl(pkg));
+  body.setAttribute('target', '_blank')
 
   var heading = document.createElement('h4');
   heading.className = 'media-heading';
