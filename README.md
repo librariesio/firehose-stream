@@ -1,3 +1,7 @@
+# DEPRECATED
+
+This Firehose project is no longer deployed to https://firehose.libraries.io
+
 # The Libraries Firehose 
 
 The Firehose is a streaming API that gives developers low latency access to Libraries’ activity without the overhead associated with polling a REST endpoint.
